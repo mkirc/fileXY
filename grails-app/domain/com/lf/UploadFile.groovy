@@ -12,7 +12,7 @@ class UploadFile {
 
     static constraints = {
     	name nullable: false, blank: false
-    	extension nullable: false
+    	extension nullable: true
     	description nullable:true, blank:true
     	featuredBytes nullable: true
     	featuredContentType nullable: true
