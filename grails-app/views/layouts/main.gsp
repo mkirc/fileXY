@@ -7,7 +7,7 @@
         <g:layoutTitle default="fileXY"/>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <asset:link rel="icon" href="fileXY.svg" type="image/x-ico"/>
+    <asset:link rel="icon" href="thump.png" type="image/x-ico"/>
 
     <asset:stylesheet src="application.css"/>
 
@@ -58,7 +58,8 @@
 
     <div class="col">
         <strong class="centered"></strong>
-        <p>This is a learning project. Go easy on my, would you?</p>
+        <p>This is a learning project. </p>
+        <p>Go easy on me, huh?</p>
 
     </div>
 
