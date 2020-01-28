@@ -18,8 +18,11 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${dirList}" />
-
+            <ul class='dir-list'>
+                <g:each in="${dirList}" var="it">
+                    <li><g:link action="show" id="${it.id}">${it.name}</g:link></li>
+                </g:each>
+            </ul>
             <div class="pagination">
                 <g:paginate total="${dirCount ?: 0}" />
             </div>
