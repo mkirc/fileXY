@@ -10,6 +10,8 @@ class UploadFile {
 	Date dateCreated
 	Date lastUpdated
 
+    static belongsTo = [dir: Dir]
+
     static constraints = {
     	name nullable: false, blank: false
     	extension nullable: true
@@ -21,5 +23,9 @@ class UploadFile {
     static mapping = {
     	featuredBytes column: "featured_Bytes", sqlType: "longblob"
 
+    }
+
+    String toString() {
+        name
     }
 }

@@ -4,7 +4,7 @@
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.lf.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.lf.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.lf.Role'
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/uploadFile'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/dir'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
