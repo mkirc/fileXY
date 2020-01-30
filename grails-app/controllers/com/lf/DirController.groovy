@@ -24,8 +24,17 @@ class DirController {
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def create() {
-        respond new Dir(params)
-    }
+        Dir subDir = new Dir(params)
+        try {
+            def p = dirService.get(params.dir.id)
+            subDir.parent = p
+        }
+        catch (MissingPropertyException) {
+
+        }
+        
+        respond subDir
+    }    
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def save(Dir dir) {
@@ -71,6 +80,7 @@ class DirController {
         }
 
         try {
+
             dirService.save(dir)
         } catch (ValidationException e) {
             respond dir.errors, view:'edit'

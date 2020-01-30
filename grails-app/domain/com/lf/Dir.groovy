@@ -5,11 +5,11 @@ class Dir {
 	String name
 	Dir parent
 	List<UploadFile> items
-    List<Dir> subDirs
+    Set<Dir> subDirs
 
 	static hasMany = [items: UploadFile, subDirs: Dir]
 	static hasOne = [parent: Dir]
-	static mappedBy = [parent: 'none']
+	static mappedBy = [subDirs: 'parent']
 
     static constraints = {
     	name nullable: false, blank: false

@@ -18,11 +18,17 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <ul class='dir-list'>
+            <f:table collection="${dirList}"/>
+            <!-- <ul id='dir-list'>
                 <g:each in="${dirList}" var="it">
-                    <li><g:link action="show" id="${it.id}">${it.name}</g:link></li>
-                </g:each>
-            </ul>
+                    <li><span class="caret"><g:link action="show" id="${it.id}">${it.name}</g:link></span>
+                    <ul class="nested">
+                        <g:each in="${it.subDirs}" var="sd">
+                            <li><span class="caret"><g:link action="show" id="${sd.id}">${sd.name}</g:link></span>
+                        </g:each></li>
+                </g:each></li>
+                </ul>
+            </ul> -->
             <div class="pagination">
                 <g:paginate total="${dirCount ?: 0}" />
             </div>

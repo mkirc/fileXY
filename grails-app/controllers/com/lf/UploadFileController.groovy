@@ -97,6 +97,7 @@ class UploadFileController {
             catch (MissingMethodException) {
 
                 uploadFile.name = uploadFile.description
+                uploadFile.extension = uploadFile.name.substring(uploadFile.name.lastIndexOf(".") + 1)
                 uploadFile.featuredContentType = 'text/plain'
             }
 
@@ -108,8 +109,8 @@ class UploadFileController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'uploadFile.label', default: 'UploadFile'), uploadFile.id])
-                redirect uploadFile
+                flash.message = message(code: 'default.created.message', args: [message(code: 'uploadFile.label', default: 'UploadFile'), uploadFile.name])
+                redirect action: 'index', controller: 'dir'       
             }
             '*' { respond uploadFile, [status: CREATED] }
         }

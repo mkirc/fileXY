@@ -1,6 +1,8 @@
 package com.lf
 
 import grails.gorm.services.Service
+import grails.gorm.transactions.Transactional
+import groovy.transform.CompileStatic
 
 @Service(Dir)
 interface DirService {

@@ -27,7 +27,7 @@
             </g:hasErrors>
             <g:form resource="${this.dir}" method="POST">
                 <fieldset class="form">
-                    <f:all bean="dir"/>
+                    <f:all bean="dir" except="subDirs, items"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
