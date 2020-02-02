@@ -88,17 +88,18 @@ class UploadFileController {
 
         try {
             MultipartFile file = request.getFile('featuredBytes')
-            try {
-                file.exists()
-                uploadFile.name = file.getOriginalFilename()
-                uploadFile.extension = uploadFile.name.substring(uploadFile.name.lastIndexOf(".") + 1)
-                uploadFile.featuredContentType = file.getContentType()
-            }
-            catch (MissingMethodException) {
 
-                uploadFile.name = uploadFile.description
-                uploadFile.extension = uploadFile.name.substring(uploadFile.name.lastIndexOf(".") + 1)
-                uploadFile.featuredContentType = 'text/plain'
+            if (file != null) {
+                uploadFile.name = file.getOriginalFilename()
+
+                if (uploadFile.name.length() != 0) {
+                    uploadFile.extension = uploadFile.name.substring(uploadFile.name.lastIndexOf(".") + 1)
+                    uploadFile.featuredContentType = file.getContentType()
+                } else {
+                    uploadFile.name = uploadFile.description
+                    uploadFile.featuredContentType = 'text/plain'
+                }
+
             }
 
             uploadFileService.save(uploadFile)
