@@ -3,6 +3,7 @@ package com.lf
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 import grails.plugin.springsecurity.annotation.Secured
+import groovy.xml.MarkupBuilder
 
 
 class DirController {
@@ -35,6 +36,11 @@ class DirController {
         
         respond subDir
     }    
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
+    def listSubDirs(Long id) {
+        def d = dirService.get(id)
+        render(template: "subDirsTemplate", var: "subDir", collection: d.subDirs)
+    }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def save(Dir dir) {

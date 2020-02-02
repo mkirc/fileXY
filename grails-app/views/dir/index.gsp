@@ -19,6 +19,11 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <f:table collection="${dirList}"/>
+            <g:each in="${dirList}" var="it">
+                <g:if test="${it.parent == null}">
+                    <g:link action="listSubDirs" id="${it.id}">${it.name}</g:link>
+                </g:if>
+            </g:each>
             <!-- <ul id='dir-list'>
                 <g:each in="${dirList}" var="it">
                     <li><span class="caret"><g:link action="show" id="${it.id}">${it.name}</g:link></span>
