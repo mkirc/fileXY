@@ -5,6 +5,7 @@
         <g:set var="entityName" value="${message(code: 'dir.label', default: 'Dir')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
         <asset:javascript src="jquery-3.3.1.min.js"/>
+        <asset:javascript src="scripts.js"/>
     </head>
     <body>
         <a href="#list-dir" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -22,33 +23,9 @@
             <f:table collection="${dirList}"/>
             <g:each in="${dirList}" var="it">
                 <g:if test="${it.parent == null}">
-                    %{-- <g:link action="listSubDirs" id="${it.id}">${it.name}</g:link> --}%
-                    <ul class='dirs'>
-                        <li id="${it.id}"><a>${it.name} </a><button class='ls' id="${it.id}">ls</button></li>
-
-                        %{-- <g:createLink action="listSubDirs" id="${it.id}">${it.name}</g:createLink> --}%
+                    <ul class='dir-list'>
+                        <li class='dir-list-item' id="${it.id}"><a>${it.name} </a><button class='ls' id="${it.id}">ls</button></li>
                     </ul>
-                    
-                    <script type="text/javascript">
-                    $(document).ready(function() {
-                        $('#${it.id}').click(function() {
-                            $.ajax({
-                                url:"${g.createLink(action:'listSubDirs')}",
-                                data: {id: "${it.id}"},
-                                success: function(resp) {
-                                    $('#${it.id}').append(resp);
-                                    // console.log(resp);
-                                },
-                                error: function(request, status, error) {
-                                    alert(error);
-                                },
-
-                            });
-
-                        });
-                    });
-
-                </script>
                 </g:if>
             </g:each>
 

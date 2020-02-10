@@ -604,6 +604,7 @@ ul, #dir-list {
   padding: 0;
 }
 
+
 /* Style the caret/arrow */
 .caret {
   cursor: pointer;
@@ -632,3 +633,7 @@ ul, #dir-list {
 .active {
   display: block;
 } 
+
+ul, .sub-dirs-list {
+    display: block;
+}
