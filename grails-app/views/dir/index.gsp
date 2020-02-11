@@ -5,7 +5,7 @@
         <g:set var="entityName" value="${message(code: 'dir.label', default: 'Dir')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
         <asset:javascript src="jquery-3.3.1.min.js"/>
-        <asset:javascript src="scripts.js"/>
+        
     </head>
     <body>
         <a href="#list-dir" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -20,26 +20,17 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${dirList}"/>
+            %{-- <f:table collection="${dirList}"/> --}%
             <g:each in="${dirList}" var="it">
                 <g:if test="${it.parent == null}">
                     <ul class='dir-list'>
-                        <li class='dir-list-item' id="${it.id}"><a>${it.name} </a><button class='ls' id="${it.id}">ls</button></li>
+                        <li class='dir-list-item' id="${it.id}">
+                            <g:link action="show" id="${it.id}">${it.name}</g:link>
+                            <button class='ls' id="${it.id}">ls</button>
+                        </li>
                     </ul>
                 </g:if>
             </g:each>
-
-
-            <!-- <ul id='dir-list'>
-                <g:each in="${dirList}" var="it">
-                    <li><span class="caret"><g:link action="show" id="${it.id}">${it.name}</g:link></span>
-                    <ul class="nested">
-                        <g:each in="${it.subDirs}" var="sd">
-                            <li><span class="caret"><g:link action="show" id="${sd.id}">${sd.name}</g:link></span>
-                        </g:each></li>
-                </g:each></li>
-                </ul>
-            </ul> -->
             <div class="pagination">
                 <g:paginate total="${dirCount ?: 0}" />
             </div>
