@@ -14,27 +14,69 @@ function msg() {
 }
 
 
-$(document).ready(function() {
+// $(document).ready(function() {
 	
-    $('.ls').one('click', function() {
-    	var ID = $(this).attr('id');	
-        $.ajax({
-            url:"/dir/listSubDirs/",
-            data: {id: ID},
-            success: function(resp) {
-            	// alert(resp);
-                $('.dir-list-item[id=' + ID + ']').append(resp);
-            },
-            error: function(request, status, error) {
-                alert(error);
-            },
+//     $('.ls').one('click', function() {
+//     	var ID = $(this).attr('id');	
+//         $.ajax({
+//             url:"/dir/listSubDirs/",
+//             data: {id: ID},
+//             success: function(resp) {
+//             	console.log(resp);
+//                 $('ul > [id=' + ID + ']').append(resp);
+//             },
+//             error: function(request, status, error) {
+//                 alert(error);
+//             },
 
-        });
+//         });
 
-    });
-    $('.ls').on('click', function(){
-    	var ID = $(this).attr('id');
-    	$('.dir-list-item[id=' + ID + '] > ul').toggle();
-    });
+//     });
+//     $('.ls').on('click', function(){
+//     	var ID = $(this).attr('id');
+//     	$('ul > [id=' + ID + '] > ul').toggle();
+//     });
     
+// });
+
+$(document).ready(function() {
+	lsAjaxCall();
+	DirToggler();
 });
+
+function lsAjaxCall() {
+
+    $('ul').on('click','.ls', function() {
+    		if ($(this).hasClass("stop")) {
+    			return false;
+    		}
+    		$(this).addClass("stop");
+	    	ID = $(this).attr('id');	
+	        $.ajax({
+	            url:"/dir/listSubDirs/",
+	            data: {id: ID},
+	            success: function(resp) {
+	            	console.log(resp);
+	                $('ul > [id=' + ID + ']').append(resp);
+	                $(this).removeClass("stop");
+	            },
+	            error: function(request, status, error) {
+	                console.log(error);
+	            },
+	            complete: function() {
+	            	$('ul > [id=' + ID + ']');
+	            }
+	        });
+	        // $('ul').off('click', '.ls');
+	    });
+    
+}
+
+function DirToggler() {
+    
+    $('ul').on('click','.ls', function(){
+    	var ID = $(this).attr('id');
+    	// console.log('hit')
+    	$('ul > [id=' + ID + '] > ul').toggle();
+    });
+}
