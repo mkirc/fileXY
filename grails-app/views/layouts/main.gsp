@@ -79,6 +79,7 @@
 </div>
 
 <asset:javascript src="application.js"/>
+<asset:javascript src="scripts.js"/>
 
 </body>
 </html>
