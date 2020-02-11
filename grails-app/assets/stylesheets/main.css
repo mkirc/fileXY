@@ -575,6 +575,29 @@ th:hover, tr:hover {
     background-image: url(../images/skin/database_save.png);
 }
 
+/* my Buttons */
+
+button, .ls {
+    color: rgb(102,102,102);
+    line-height: 8px;
+    border-radius: 4.2px;
+    background: #f29596;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 9.8px;
+    padding-left: 9.8px;
+    border: none;
+    box-sizing: border-box;
+
+}
+
+.ls:hover {
+    background: #c97ba2;
+}
+.ls:active {
+    background: #ffc4c5;
+}
+
 a.skip {
     position: absolute;
     left: -9999px;
@@ -605,35 +628,9 @@ ul, #dir-list {
 }
 
 
-/* Style the caret/arrow */
-.caret {
-  cursor: pointer;
-  user-select: none; /* Prevent text selection */
-}
-
-/* Create the caret/arrow with a unicode, and style it */
-.caret::before {
-  content: "\25B6";
-  color: black;
-  display: inline-block;
-  margin-right: 6px;
-}
-
-/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-.caret-down::before {
-  transform: rotate(90deg);
-}
-
-/* Hide the nested list */
-.nested {
-  display: none;
-}
-
-/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
-.active {
-  display: block;
-} 
 
 ul, .sub-dirs-list {
-    display: block;
+    padding-left: 40px;
+    list-style-position: outside;
 }
+
