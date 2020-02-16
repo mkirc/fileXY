@@ -600,6 +600,18 @@ button, .ls {
 .ls:active {
     background: #ffc4c5;
 }
+.mkdir:hover {
+    background: #c97ba2;
+}
+.mkdir:active {
+    background: #ffc4c5;
+}
+.addFile:hover {
+    background: #c97ba2;
+}
+.addFile:active {
+    background: #ffc4c5;
+}
 
 a.skip {
     position: absolute;
@@ -621,7 +633,10 @@ img.grails-logo {
 
  /* Remove default bullets */
 ul, #dir-list {
-  list-style-type: none;
+    padding-left: 40px;
+    list-style-position: outside;
+    list-style-type: none;
+    
 }
 
 /* Remove margins and padding from the parent ul */
@@ -630,10 +645,11 @@ ul, #dir-list {
   padding: 0;
 }
 
-
-
-ul, .sub-dirs-list {
-    padding-left: 40px;
-    list-style-position: outside;
+ul.dir-list {
+    font-weight: bold;
 }
 
+
+ul.items-list {
+    font-weight: normal;
+}
