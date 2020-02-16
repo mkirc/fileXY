@@ -25,13 +25,17 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.dir}" method="POST">
+            <p>${this.dir}</p>
+            <g:form resource="${this.dir}" url="[controller:'dir',action:'save']" method="POST">
                 <fieldset class="form">
                     <f:all bean="dir" except="subDirs, items"/>
                 </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                <fieldset>
+                    <button class='create' type='submit'>create</button>
                 </fieldset>
+                %{-- <fieldset class="buttons"> --}%
+                   %{--  <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /> --}%
+                %{-- </fieldset> --}%
             </g:form>
         </div>
     </body>

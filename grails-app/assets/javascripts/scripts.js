@@ -42,7 +42,39 @@ function msg() {
 $(document).ready(function() {
 	lsAjaxCall();
 	DirToggler();
+	mkDirAjaxCall();
+	createFileAjaxCall();
+
 });
+
+
+
+function mkDirAjaxCall() {
+
+	$('ul').on('click', '.mkdir', function() {
+		var parentid = $(this).attr("id");
+
+		$.ajax({
+			url:"/dir/create",
+			data: {'dir.id': parentid},
+			success: function(resp) {
+				var form = $(resp).find('form[action="/dir/save"]');
+				$('.mkdir[id=' + parentid + '] + div').append(form).dialog({
+					modal: true,
+					close: function() {
+						form[0].reset();
+						$('li[id=' + parentid + ']').append('<div></div>');
+
+					}
+				}, "open");
+			},
+			error: function(req, stat, err) {
+				console.log(err);
+			} 
+		});
+	});
+}
+
 
 function lsAjaxCall() {
 
@@ -53,21 +85,17 @@ function lsAjaxCall() {
     		$(this).addClass("stop");
 	    	ID = $(this).attr('id');	
 	        $.ajax({
-	            url:"/dir/listSubDirs/",
+	            url:"/dir/listSubDirs",
 	            data: {id: ID},
 	            success: function(resp) {
-	            	console.log(resp);
+	            	// console.log(resp);
 	                $('ul > [id=' + ID + ']').append(resp);
 	                $(this).removeClass("stop");
 	            },
 	            error: function(request, status, error) {
 	                console.log(error);
-	            },
-	            complete: function() {
-	            	$('ul > [id=' + ID + ']');
 	            }
 	        });
-	        // $('ul').off('click', '.ls');
 	    });
     
 }
@@ -76,7 +104,6 @@ function DirToggler() {
     
     $('ul').on('click','.ls', function(){
     	var ID = $(this).attr('id');
-    	// console.log('hit')
     	$('ul > [id=' + ID + '] > ul').toggle();
     });
 }

@@ -5,7 +5,7 @@
         <g:set var="entityName" value="${message(code: 'dir.label', default: 'Dir')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
         <asset:javascript src="jquery-3.3.1.min.js"/>
-        
+
     </head>
     <body>
         <a href="#list-dir" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -27,13 +27,15 @@
                         <li class='dir-list-item' id="${it.id}">
                             <g:link action="show" id="${it.id}">${it.name}</g:link>
                             <button class='ls' id="${it.id}">ls</button>
+                            <button class='mkdir' id="${it.id}">mkdir</button>
+                            <div></div>
                         </li>
                     </ul>
                 </g:if>
             </g:each>
-            <div class="pagination">
+%{--             <div class="pagination">
                 <g:paginate total="${dirCount ?: 0}" />
-            </div>
+            </div> --}%
         </div>
     </body>
 </html>

@@ -11,6 +11,7 @@
 
     <asset:stylesheet src="application.css"/>
 
+
     <g:layoutHead/>
 </head>
 
@@ -79,7 +80,9 @@
 </div>
 
 <asset:javascript src="application.js"/>
+<asset:javascript src="jquery-ui.min.js"/>
 <asset:javascript src="scripts.js"/>
+
 
 </body>
 </html>
