@@ -28,6 +28,7 @@
                             <g:link action="show" id="${it.id}">${it.name}</g:link>
                             <button class='ls' id="${it.id}">ls</button>
                             <button class='mkdir' id="${it.id}">mkdir</button>
+                            <button class='addFile' id="${it.id}">add File</button>
                             <div></div>
                         </li>
                     </ul>

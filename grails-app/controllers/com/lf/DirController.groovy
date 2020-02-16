@@ -41,6 +41,11 @@ class DirController {
         def d = dirService.get(id)
         render(template: "subDirsTemplate", var: "subDir", collection: d.subDirs)
     }
+    @Secured(['ROLE_ADMIN', 'ROLE_USER'])
+    def listItems(Long id) {
+        def d = dirService.get(id)
+        render(template: "itemsTemplate", var: "item", collection: d.items)
+    }
 
     @Secured(['ROLE_ADMIN', 'ROLE_USER'])
     def save(Dir dir) {

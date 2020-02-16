@@ -47,7 +47,32 @@ $(document).ready(function() {
 
 });
 
+function createFileAjaxCall() {
 
+	$('ul').on('click', '.addFile', function() {
+		var parentid = $(this).attr("id");
+
+		$.ajax({
+			url:"/uploadFile/create",
+			data: {'dir.id': parentid},
+			success: function(resp) {
+				var form = $(resp).find('form[action="/uploadFile/save"]');
+				$('.addFile[id=' + parentid + '] ~ div').append(form).dialog({
+					modal: true,
+					close: function() {
+						form[0].reset();
+						$('li[id=' + parentid + ']').append('<div></div>');
+
+					}
+				}, "open");
+			},
+			error: function(req, stat, err) {
+				console.log(err);
+			}				
+		});
+	});
+
+}
 
 function mkDirAjaxCall() {
 
@@ -59,7 +84,7 @@ function mkDirAjaxCall() {
 			data: {'dir.id': parentid},
 			success: function(resp) {
 				var form = $(resp).find('form[action="/dir/save"]');
-				$('.mkdir[id=' + parentid + '] + div').append(form).dialog({
+				$('.mkdir[id=' + parentid + '] ~ div').append(form).dialog({
 					modal: true,
 					close: function() {
 						form[0].reset();
@@ -79,10 +104,10 @@ function mkDirAjaxCall() {
 function lsAjaxCall() {
 
     $('ul').on('click','.ls', function() {
-    		if ($(this).hasClass("stop")) {
+    		if ($(this).hasClass("dir-stop")) {
     			return false;
     		}
-    		$(this).addClass("stop");
+    		$(this).addClass("dir-stop");
 	    	ID = $(this).attr('id');	
 	        $.ajax({
 	            url:"/dir/listSubDirs",
@@ -90,7 +115,24 @@ function lsAjaxCall() {
 	            success: function(resp) {
 	            	// console.log(resp);
 	                $('ul > [id=' + ID + ']').append(resp);
-	                $(this).removeClass("stop");
+	                $(this).removeClass("dir-stop");
+	            },
+	            error: function(request, status, error) {
+	                console.log(error);
+	            }
+	        });
+			if ($(this).hasClass("itm-stop")) {
+    			return false;
+    		}
+    		$(this).addClass("itm-stop");
+	    	ID = $(this).attr('id');	
+	        $.ajax({
+	            url:"/dir/listItems",
+	            data: {id: ID},
+	            success: function(resp) {
+	            	// console.log(resp);
+	                $('ul > [id=' + ID + ']').append(resp);
+	                $(this).removeClass("itm-stop");
 	            },
 	            error: function(request, status, error) {
 	                console.log(error);
