@@ -5,6 +5,9 @@
         <g:set var="entityName" value="${message(code: 'dir.label', default: 'Dir')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
         <asset:javascript src="jquery-3.3.1.min.js"/>
+        <style type="text/css">
+            form {display: inline-block;}
+        </style>
 
     </head>
     <body>
@@ -29,6 +32,9 @@
                             <button class='ls' id="${it.id}">ls</button>
                             <button class='mkdir' id="${it.id}">mkdir</button>
                             <button class='addFile' id="${it.id}">add File</button>
+                            <g:form resource="${it}" method="DELETE">
+                                <button class="delete" type="submit" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" >delete</button>
+                            </g:form>                          
                             <div></div>
                         </li>
                     </ul>

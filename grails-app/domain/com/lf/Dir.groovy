@@ -10,6 +10,10 @@ class Dir {
 	static hasMany = [items: UploadFile, subDirs: Dir]
 	static hasOne = [parent: Dir]
 	static mappedBy = [subDirs: 'parent']
+    static mapping = {
+        subDirs cascade: 'delete'
+        items cascade: 'all-delete-orphan'
+    }
 
     static constraints = {
     	name nullable: false, blank: false

@@ -612,6 +612,12 @@ button, .ls {
 .addFile:active {
     background: #ffc4c5;
 }
+.delete:hover {
+    background: #c97ba2;
+}
+.delete:active {
+    background: #ffc4c5;
+}
 
 a.skip {
     position: absolute;
