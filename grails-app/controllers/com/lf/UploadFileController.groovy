@@ -168,7 +168,7 @@ class UploadFileController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'uploadFile.label', default: 'UploadFile'), id])
-                redirect action:"index", method:"GET"
+                redirect controller:"dir", action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }

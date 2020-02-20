@@ -72,7 +72,7 @@ class DirController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'dir.label', default: 'Dir'), dir.id])
-                redirect dir
+                redirect action:"index"
             }
             '*' { respond dir, [status: CREATED] }
         }

@@ -619,6 +619,13 @@ button, .ls {
     background: #ffc4c5;
 }
 
+.download:hover {
+    background: #c97ba2;
+}
+.download:active {
+    background: #ffc4c5;
+}
+
 a.skip {
     position: absolute;
     left: -9999px;
@@ -638,7 +645,8 @@ img.grails-logo {
 }
 
  /* Remove default bullets */
-ul, #dir-list {
+ul, #dirs-list {
+
     padding-left: 40px;
     list-style-position: outside;
     list-style-type: none;
@@ -646,12 +654,12 @@ ul, #dir-list {
 }
 
 /* Remove margins and padding from the parent ul */
-#dir-list {
+#dirs-list {
   margin: 0;
   padding: 0;
 }
 
-ul.dir-list {
+ul.dirs-list {
     font-weight: bold;
 }
 
@@ -659,3 +667,8 @@ ul.dir-list {
 ul.items-list {
     font-weight: normal;
 }
+
+div .container {
+    overflow: auto;
+    max-height: 100vh;
+} 

@@ -29,8 +29,9 @@
                 <fieldset class="form">
                     <f:all bean="uploadFile" except="featuredContentType, name, extension"/>
                 </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                <fieldset>
+                    %{-- <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /> --}%
+                    <button class='create' type='submit'>create</button>
                 </fieldset>
             </g:form>
         </div>

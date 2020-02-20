@@ -26,8 +26,8 @@
             %{-- <f:table collection="${dirList}"/> --}%
             <g:each in="${dirList}" var="it">
                 <g:if test="${it.parent == null}">
-                    <ul class='dir-list'>
-                        <li class='dir-list-item' id="${it.id}">
+                    <ul class='dirs-list'>
+                        <li class='dirs-list-item' id="${it.id}">
                             <g:link action="show" id="${it.id}">${it.name}</g:link>
                             <button class='ls' id="${it.id}">ls</button>
                             <button class='mkdir' id="${it.id}">mkdir</button>

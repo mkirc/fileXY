@@ -44,6 +44,7 @@ $(document).ready(function() {
 	DirToggler();
 	mkDirAjaxCall();
 	createFileAjaxCall();
+	downloadAjaxCall();
 
 });
 
@@ -100,6 +101,22 @@ function mkDirAjaxCall() {
 	});
 }
 
+function downloadAjaxCall() {
+	$('ul').on('click', '.download', function() {
+		var parentid = $(this).attr("id");
+		window.open("/uploadFile/download/"+ parentid +"", '_blank');
+		// $.ajax({
+		// 	url:"/uploadFile/download/" + parentid + "",
+		// 	success: function(resp) {
+		// 		console.log('yup');
+		// 	},
+		// 	error: function(req, stat, err) {
+		// 		console.log(err);
+		// 	}
+		// });
+	});
+}
+
 
 function lsAjaxCall() {
 
@@ -107,14 +124,15 @@ function lsAjaxCall() {
     		if ($(this).hasClass("dir-stop")) {
     			return false;
     		}
+    		console.log(this)
     		$(this).addClass("dir-stop");
-	    	ID = $(this).attr('id');	
+	    	var ID = $(this).attr('id');	
 	        $.ajax({
 	            url:"/dir/listSubDirs",
 	            data: {id: ID},
 	            success: function(resp) {
 	            	// console.log(resp);
-	                $('ul > [id=' + ID + ']').append(resp);
+	                $('li[class*="dirs"][id=' + ID + ']').append(resp);
 	                $(this).removeClass("dir-stop");
 	            },
 	            error: function(request, status, error) {
@@ -125,13 +143,13 @@ function lsAjaxCall() {
     			return false;
     		}
     		$(this).addClass("itm-stop");
-	    	ID = $(this).attr('id');	
+	    	var ID = $(this).attr('id');	
 	        $.ajax({
 	            url:"/dir/listItems",
 	            data: {id: ID},
 	            success: function(resp) {
 	            	// console.log(resp);
-	                $('ul > [id=' + ID + ']').append(resp);
+	                $('ul[class*="dirs"] > [id=' + ID + ']').append(resp);
 	                $(this).removeClass("itm-stop");
 	            },
 	            error: function(request, status, error) {
