@@ -663,6 +663,10 @@ ul.dirs-list {
     font-weight: bold;
 }
 
+ul.dirs-list span {
+    font-weight: normal;
+}
+
 
 ul.items-list {
     font-weight: normal;
@@ -672,3 +676,28 @@ div .container {
     overflow: auto;
     max-height: 100vh;
 } 
+
+
+.item-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.items-list-item {
+    display: none;
+}
+.item-dropdown:hover .items-list-item {
+    padding-left: 40px;
+    display: block;
+}
+
+.subdir-dropdown {
+    position: relative;
+    display: list-item;
+}
+.sub-dirs-list-item {
+    display: none;
+}
+.subdir-dropdown:hover .sub-dirs-list-item {
+    padding-left: 40px;
+    display: block;
+}
